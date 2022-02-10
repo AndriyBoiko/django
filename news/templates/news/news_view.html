@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+{{news_item.title}}
+{%endblock%}
+{% block sidebar %}
+{% include 'inc/_sidebar.html' %}
+{% endblock %}
+
+
+{% block content %}
+  
+   
+     <div class="">
+     
+      <div class="row">
+            <div class="col-md-3">
+             {%if news_item.photo %}
+             <img src="{{news_item.photo.url}}" alt="Тут має бути фото" width="200px" class="mr-3">
+             
+           {%else%}
+             <img src="https://picsum.photos/id/1060/200/300/?blur=2" alt="Тут має бути фото"class="mr-3">  
+           {%endif  %}
+            </div>
+          <div class="col-md-7">
+              <div class="card-body">
+               <h5 class="card-title">{{news_item.title}}</h5>
+               <p class="card-text">{{news_item.content|linebreaks}}</p>
+               
+              </div>
+          </div>
+      
+           
+     
+     </div>
+     <div class="card-footer text-muted ">
+      {{news_item.created_at}}
+     </div>
+
+{% endblock %}
